@@ -204,8 +204,8 @@ public class DriveConstants {
     // Velocity Control Constant (JUNIOR)
     // Similar process but slightly different focus
     public static double JUNIOR_VELOCITY_KF 	 = 0.05115; 
-    public static double JUNIOR_VELOCITY_KP 	 = 0.14014;
-    public static double JUNIOR_VELOCITY_KI 	 = 0.001;
+    public static double JUNIOR_VELOCITY_KP 	 = 0.14014*4;
+    public static double JUNIOR_VELOCITY_KI 	 = 0.005;
     public static double JUNIOR_VELOCITY_KD 	 = 10 * JUNIOR_VELOCITY_KP;	// Start with 10 x Kp for increased damping of overshoot
     public static int    JUNIOR_VELOCITY_IZONE   = 400;     
     

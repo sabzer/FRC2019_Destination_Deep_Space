@@ -90,6 +90,7 @@ public class NavigationSubsystem extends BitBucketSubsystem {
 	@Override
 	public void diagnosticsPeriodic() {
 		// TODO Auto-generated method stub
+		updateDashboard();
 		
 	}
 
@@ -97,7 +98,7 @@ public class NavigationSubsystem extends BitBucketSubsystem {
 		return ahrs.getYaw();
 	}
 	public double getYawRate_degPerSec() {
-		return ahrs.getRate();
+		return ahrs.getRate()*180.0/Math.PI;
 	}
 
 

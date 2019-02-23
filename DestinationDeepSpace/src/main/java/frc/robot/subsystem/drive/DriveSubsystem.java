@@ -570,6 +570,11 @@ public class DriveSubsystem extends BitBucketSubsystem {
 		SmartDashboard.putNumber(getName()+"/Commanded Speed (ips)", speed_ips);
 		SmartDashboard.putNumber(getName()+"/Commanded Turn (dps)", Math.toDegrees(turn_radps));
 
+		// TODO: add filter
+		double measuredTurn_radps = Math.toRadians(navigation.getYawRate_degPerSec());
+		double error_radps = turn_radps - measuredTurn_radps;
+		turn_radps += error_radps;
+
 		double diffSpeed_ips = turn_radps * DriveConstants.WHEEL_TRACK_INCHES / 2.0 ;
 
 		// Compute, report, and limit lateral acceleration
