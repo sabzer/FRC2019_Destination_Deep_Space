@@ -37,12 +37,6 @@ public class AutonomousSubsystem extends BitBucketSubsystem {
     @Override
 	protected void initDefaultCommand() {
     }
-    
-
-
-    private boolean inAutoAssistRegion = false;
-    private double parallax = 0;
-    private double offAxis = 0;
 
     @Override
 	public void periodic() {
@@ -107,7 +101,7 @@ public class AutonomousSubsystem extends BitBucketSubsystem {
 
 
     public boolean getUseAutoAssist() {
-        return getTelemetryEnabled() && SmartDashboard.getBoolean(getName() + "/AutoAssist", false);
+        return getDiagnosticsEnabled() && SmartDashboard.getBoolean(getName() + "/AutoAssist", false);
     }
 
 
