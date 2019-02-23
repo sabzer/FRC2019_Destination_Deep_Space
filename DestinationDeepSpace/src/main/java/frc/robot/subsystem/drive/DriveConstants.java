@@ -36,8 +36,8 @@ public class DriveConstants {
     public static final double LOCK_DEADBAND_IPS = 12.0;  // ignore button command changes above this speed
     public static final double ALIGN_DEADBAND_DPS = 45.0; // ignore button command changes above this turn rate
 
-    public static final double WHEEL_TRACK_INCHES = 23.5;
-    public static final double WHEEL_DIAMETER_INCHES = 6.0;
+    public static final double WHEEL_TRACK_INCHES = 18.25; // <-- JUNIOR, Real Bot -->23.5;
+    public static final double WHEEL_DIAMETER_INCHES = 4.0; // <-- JUNIOR, Real Bot --> 6.0;
     public static final double WHEEL_CIRCUMFERENCE_INCHES = Math.PI*WHEEL_DIAMETER_INCHES;
     public static final double TRACK_TO_CIRCUMFERENCE_RATIO = WHEEL_TRACK_INCHES / WHEEL_DIAMETER_INCHES;
     public static final double WHEEL_ROTATION_PER_FRAME_DEGREES = TRACK_TO_CIRCUMFERENCE_RATIO / 360.0;
@@ -81,8 +81,8 @@ public class DriveConstants {
     // E.g., start with false, if the counts go the correct direction you are good
     // to go; if not, set the flag to true (indicating the sensor inverted from the
     // positive input).
-    public static final boolean LEFT_DRIVE_MOTOR_SENSOR_PHASE = true;
-    public static final boolean RIGHT_DRIVE_MOTOR_SENSOR_PHASE = true;
+    public static final boolean LEFT_DRIVE_MOTOR_SENSOR_PHASE = false; // <-- JUNIOR, real bot = true;
+    public static final boolean RIGHT_DRIVE_MOTOR_SENSOR_PHASE = false;  // <-- JUNIOR, real bot = true;
 
     // SECOND !!! if you need the motor to move in the opposite direction when
     // positive is commanded, set the appropriate inversion flag true
@@ -93,30 +93,35 @@ public class DriveConstants {
     // the physical controller firmware, not the software.
     public static final int LEFT_DRIVE_MOTOR_IDS[] =
     {
-            MotorId.LEFT_DRIVE_MOTOR_REAR_ID
-            ,MotorId.LEFT_DRIVE_MOTOR_MIDDLE_ID
-            ,MotorId.LEFT_DRIVE_MOTOR_FRONT_ID
+        // JUNIOR
+        MotorId.LEFT_DRIVE_MOTOR_FRONT_ID,
+        MotorId.LEFT_DRIVE_MOTOR_REAR_ID
+        // MotorId.LEFT_DRIVE_MOTOR_REAR_ID
+        // ,MotorId.LEFT_DRIVE_MOTOR_MIDDLE_ID
+        // ,MotorId.LEFT_DRIVE_MOTOR_FRONT_ID
     };
 
     public static final boolean LEFT_DRIVE_MOTOR_INVERSION_FLAG[] = 
     {
-        false
-        ,false
-        ,false
+        true //false
+        ,true //false
+        ,true //false
     };
 
     public static final int RIGHT_DRIVE_MOTOR_IDS[] =
     {
-            MotorId.RIGHT_DRIVE_MOTOR_FRONT_ID
-            ,MotorId.RIGHT_DRIVE_MOTOR_MIDDLE_ID
-            ,MotorId.RIGHT_DRIVE_MOTOR_REAR_ID
+        MotorId.RIGHT_DRIVE_MOTOR_FRONT_ID
+        ,MotorId.RIGHT_DRIVE_MOTOR_REAR_ID
+        // MotorId.RIGHT_DRIVE_MOTOR_FRONT_ID
+        //     ,MotorId.RIGHT_DRIVE_MOTOR_MIDDLE_ID
+        //     ,MotorId.RIGHT_DRIVE_MOTOR_REAR_ID
     };
 
     public static final boolean RIGHT_DRIVE_MOTOR_INVERSION_FLAG[] = 
     {
-        true
-        ,true
-        ,true
+        false //true
+        ,false //true
+        ,false //true
     };
 
     
@@ -195,6 +200,14 @@ public class DriveConstants {
     // Similar process but slightly different focus
 
     public static final int PID_VELOCITY_SLOT = 1;
+
+    // Velocity Control Constant (JUNIOR)
+    // Similar process but slightly different focus
+    public static double JUNIOR_VELOCITY_KF 	 = 0.05115; 
+    public static double JUNIOR_VELOCITY_KP 	 = 0.14014;
+    public static double JUNIOR_VELOCITY_KI 	 = 0.001;
+    public static double JUNIOR_VELOCITY_KD 	 = 10 * JUNIOR_VELOCITY_KP;	// Start with 10 x Kp for increased damping of overshoot
+    public static int    JUNIOR_VELOCITY_IZONE   = 400;     
     
     // LEFT SIDE
     public static double LEFT_VELOCITY_KF 	 = 0.113039; 

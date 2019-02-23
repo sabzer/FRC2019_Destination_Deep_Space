@@ -82,11 +82,12 @@ public class Robot extends TimedRobot {
     driveSubsystem = DriveSubsystem.instance();
     driveSubsystem.initialize();
 
-    climberSubsystem = ClimberSubsystem.instance();
-    climberSubsystem.initialize();
+    // NOT ON JUNIOR
+    // climberSubsystem = ClimberSubsystem.instance();
+    // climberSubsystem.initialize();
 
-    scoringSubsystem = ScoringSubsystem.instance();
-    scoringSubsystem.initialize();
+    // scoringSubsystem = ScoringSubsystem.instance();
+    // scoringSubsystem.initialize();
 
     navigationSubsystem = NavigationSubsystem.instance();
     navigationSubsystem.initialize();
@@ -167,7 +168,9 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledInit() {
     driveSubsystem.startIdle();
-    climberSubsystem.startIdle();
+
+    // NOT ON JUNIOR
+    // climberSubsystem.startIdle();
   }
 
   /**
@@ -198,8 +201,10 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     driveSubsystem.startIdle();
-    scoringSubsystem.startIdle();
-    climberSubsystem.startIdle();
+
+    // NOT ON JUNIOR
+    // scoringSubsystem.startIdle();
+    // climberSubsystem.startIdle();
 
   }
 
@@ -222,8 +227,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     driveSubsystem.startIdle();
-    scoringSubsystem.startIdle();
-    climberSubsystem.startIdle();
+
+    // NOT ON JUNIOR
+    // scoringSubsystem.startIdle();
+    // climberSubsystem.startIdle();
   }
 
   /**
@@ -247,13 +254,17 @@ public class Robot extends TimedRobot {
     // !!!!!! DON'T START THE SS IDLE COMMANDS HERE !!!!
 
     driveSubsystem.diagnosticsInitialize();
-    climberSubsystem.diagnosticsInitialize();
-    scoringSubsystem.diagnosticsInitialize();
+
+    // NOT ON JUNIOR
+    // climberSubsystem.diagnosticsInitialize();
+    // scoringSubsystem.diagnosticsInitialize();
+
     navigationSubsystem.diagnosticsInitialize();
     visionSubsystem.diagnosticsInitialize();
     lightingSubsystem.diagnosticsInitialize();    
 
-    climberSubsystem.startIdle();
+    // NOT ON JUNIOR
+    // climberSubsystem.startIdle();
 
     MotorTestModes.init();
   }  
@@ -265,8 +276,11 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     
     driveSubsystem.diagnosticsPeriodic();
-    climberSubsystem.diagnosticsPeriodic();
-    scoringSubsystem.diagnosticsPeriodic();
+
+    // NOT ON JUNIOR
+    // climberSubsystem.diagnosticsPeriodic();
+    // scoringSubsystem.diagnosticsPeriodic();
+
     navigationSubsystem.diagnosticsPeriodic();
     visionSubsystem.diagnosticsPeriodic();
     lightingSubsystem.diagnosticsPeriodic();    

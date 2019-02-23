@@ -749,8 +749,7 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/ManualJoystickCommand",
               "_title": "SmartDashboard/ClimberSubsystem/ManualJoystickCommand",
-              "Graph/Visible time": 30.0,
-              "Visible data/SmartDashboard/ClimberSubsystem/ManualJoystickCommand": true
+              "Graph/Visible time": 30.0
             }
           },
           "0,5": {
@@ -773,8 +772,7 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/climbMotor1Current",
               "_title": "SmartDashboard/ClimberSubsystem/climbMotor1Current",
-              "Graph/Visible time": 30.0,
-              "Visible data/SmartDashboard/ClimberSubsystem/climbMotor1Current": true
+              "Graph/Visible time": 30.0
             }
           },
           "8,3": {
@@ -786,8 +784,7 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/climbMotor2Current",
               "_title": "SmartDashboard/ClimberSubsystem/climbMotor2Current",
-              "Graph/Visible time": 30.0,
-              "Visible data/SmartDashboard/ClimberSubsystem/climbMotor2Current": true
+              "Graph/Visible time": 30.0
             }
           }
         }

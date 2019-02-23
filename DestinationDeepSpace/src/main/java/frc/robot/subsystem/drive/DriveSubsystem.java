@@ -227,12 +227,20 @@ public class DriveSubsystem extends BitBucketSubsystem {
 			leftMotors[i].configMotionAcceleration(DriveConstants.DRIVE_MOTOR_MOTION_ACCELERATION_NATIVE_TICKS, 
 												DriveConstants.CONTROLLER_TIMEOUT_MS);
 
+			// TalonUtils.initializeMotorFPID(leftMotors[i], 
+			// 							DriveConstants.LEFT_VELOCITY_KF, 
+			// 							DriveConstants.LEFT_VELOCITY_KP, 
+			// 							DriveConstants.LEFT_VELOCITY_KI, 
+			// 							DriveConstants.LEFT_VELOCITY_KD, 
+			// 							DriveConstants.LEFT_VELOCITY_IZONE,
+			// 							DriveConstants.PID_VELOCITY_SLOT);
+
 			TalonUtils.initializeMotorFPID(leftMotors[i], 
-										DriveConstants.LEFT_VELOCITY_KF, 
-										DriveConstants.LEFT_VELOCITY_KP, 
-										DriveConstants.LEFT_VELOCITY_KI, 
-										DriveConstants.LEFT_VELOCITY_KD, 
-										DriveConstants.LEFT_VELOCITY_IZONE,
+										DriveConstants.JUNIOR_VELOCITY_KF, 
+										DriveConstants.JUNIOR_VELOCITY_KP, 
+										DriveConstants.JUNIOR_VELOCITY_KI, 
+										DriveConstants.JUNIOR_VELOCITY_KD, 
+										DriveConstants.JUNIOR_VELOCITY_IZONE,
 										DriveConstants.PID_VELOCITY_SLOT);
 
 			// !!!!!!!!!!!!!!! RIGHT !!!!!!!!!!!!!!!!!
@@ -290,12 +298,20 @@ public class DriveSubsystem extends BitBucketSubsystem {
 			rightMotors[i].configMotionAcceleration(DriveConstants.DRIVE_MOTOR_MOTION_ACCELERATION_NATIVE_TICKS, 
 												DriveConstants.CONTROLLER_TIMEOUT_MS);
 
+			// TalonUtils.initializeMotorFPID(rightMotors[i], 
+			// 							DriveConstants.RIGHT_VELOCITY_KF, 
+			// 							DriveConstants.RIGHT_VELOCITY_KP, 
+			// 							DriveConstants.RIGHT_VELOCITY_KI, 
+			// 							DriveConstants.RIGHT_VELOCITY_KD, 
+			// 							DriveConstants.RIGHT_VELOCITY_IZONE,
+			// 							DriveConstants.PID_VELOCITY_SLOT);
+
 			TalonUtils.initializeMotorFPID(rightMotors[i], 
-										DriveConstants.RIGHT_VELOCITY_KF, 
-										DriveConstants.RIGHT_VELOCITY_KP, 
-										DriveConstants.RIGHT_VELOCITY_KI, 
-										DriveConstants.RIGHT_VELOCITY_KD, 
-										DriveConstants.RIGHT_VELOCITY_IZONE,
+										DriveConstants.JUNIOR_VELOCITY_KF, 
+										DriveConstants.JUNIOR_VELOCITY_KP, 
+										DriveConstants.JUNIOR_VELOCITY_KI, 
+										DriveConstants.JUNIOR_VELOCITY_KD, 
+										DriveConstants.JUNIOR_VELOCITY_IZONE,
 										DriveConstants.PID_VELOCITY_SLOT);
 
 									

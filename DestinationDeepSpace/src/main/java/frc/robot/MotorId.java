@@ -13,12 +13,12 @@ package frc.robot;
 public class MotorId {
     
         /*DRIVE SUBSYSTEM*/
-        public static final int LEFT_DRIVE_MOTOR_FRONT_ID   = 3;
-        public static final int LEFT_DRIVE_MOTOR_MIDDLE_ID  = 2;
-        public static final int LEFT_DRIVE_MOTOR_REAR_ID    = 1;
-        public static final int RIGHT_DRIVE_MOTOR_FRONT_ID  = 6;
-        public static final int RIGHT_DRIVE_MOTOR_MIDDLE_ID = 5;
-        public static final int RIGHT_DRIVE_MOTOR_REAR_ID   = 4;
+        public static final int LEFT_DRIVE_MOTOR_FRONT_ID   = 1; // JUNIOR, real is 3;
+        public static final int LEFT_DRIVE_MOTOR_MIDDLE_ID  = 0; // real 2;
+        public static final int LEFT_DRIVE_MOTOR_REAR_ID    = 4; // JUNIOR, real is 1;
+        public static final int RIGHT_DRIVE_MOTOR_FRONT_ID  = 2; // JUNIOR, real 6;
+        public static final int RIGHT_DRIVE_MOTOR_MIDDLE_ID = 0; // real 5;
+        public static final int RIGHT_DRIVE_MOTOR_REAR_ID   = 3; // JUNIOR, real is 4;
         
         public static final int INTAKE_MOTOR_ID = 10;
         public static final int ARM_MOTOR1_ID = 9;
