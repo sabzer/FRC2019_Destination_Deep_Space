@@ -5,7 +5,6 @@ package frc.robot.subsystem.autonomous;
 import frc.robot.operatorinterface.OI;
 import frc.robot.subsystem.drive.DriveSubsystem;
 import frc.robot.utils.CommandUtils;
-import frc.robot.utils.Controller;
 
 import edu.wpi.first.wpilibj.command.Command;
 
