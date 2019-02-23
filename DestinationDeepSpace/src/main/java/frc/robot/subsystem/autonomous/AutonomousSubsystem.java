@@ -108,7 +108,9 @@ public class AutonomousSubsystem extends BitBucketSubsystem {
 
     @Override
 	public void initialize() {
-		initializeBaseDashboard();
+        initializeBaseDashboard();
+        
+        SmartDashboard.getBoolean(getName() + "/AutoAssist", true);
     }
     
 
