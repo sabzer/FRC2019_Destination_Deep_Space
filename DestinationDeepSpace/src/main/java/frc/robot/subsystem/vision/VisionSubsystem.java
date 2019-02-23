@@ -68,6 +68,10 @@ public class VisionSubsystem extends BitBucketSubsystem {
 		{
 			setIlluminatorOff();			
 		}
+		else
+		{
+			enableFront();
+		}
 
 		updateBaseDashboard();	
 		if (getTelemetryEnabled())
@@ -111,14 +115,14 @@ public class VisionSubsystem extends BitBucketSubsystem {
 
 	public void enableFront()
 	{
-		bvCameraNumber.setNumber(1.0);
+		bvCameraNumber.setNumber(0.0);
 		setIlluminatorOn(true,VisionConstants.DEFAULT_ILLUMINATOR_BRIGHTNESS);
 
 	}
 	public void enableBack()
 	{
 		bvCameraNumber.setNumber(0.0);
-		setIlluminatorOn(false,VisionConstants.DEFAULT_ILLUMINATOR_BRIGHTNESS);
+		setIlluminatorOn(true,VisionConstants.DEFAULT_ILLUMINATOR_BRIGHTNESS);
 	}
 
 	protected boolean isIlluminatorReady()

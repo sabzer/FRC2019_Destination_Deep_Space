@@ -11,5 +11,5 @@ package frc.robot.subsystem.vision;
  * Add your docs here.
  */
 public class VisionConstants {
-    public final static int DEFAULT_ILLUMINATOR_BRIGHTNESS = 50;
+    public final static int DEFAULT_ILLUMINATOR_BRIGHTNESS = 255;
 }
