@@ -4,7 +4,7 @@ package frc.robot.subsystem.autonomous;
 public class AutonomousConstants {
     public static final double CAMERA_FPS = 30; // TODO: actual
 
-    public static final double OFF_AXIS_KP = 1;//3.5 (simulator);
+    public static final double OFF_AXIS_KP = -1;//3.5 (simulator);
 	public static final double OFF_AXIS_KI = 0;
 	public static final double OFF_AXIS_KD = 0;
 
