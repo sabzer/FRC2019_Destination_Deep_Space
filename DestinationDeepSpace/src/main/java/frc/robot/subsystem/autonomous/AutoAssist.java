@@ -57,6 +57,15 @@ public class AutoAssist extends Command {
 
         CameraFeedback feedback = autonomousSubsystem.getClosestObjectData();
 
+        boolean inAutoAssistRegion = feedback.isInAutoAssistRegion();
+
+        // can no longer help
+        if (inAutoAssistRegion == false) {
+            return CommandUtils.stateChange(new Idle());
+        }
+
+
+
         double offAxis = feedback.getOffAxis();
         double parallax = feedback.getParallax();
         double distance = feedback.getDistance();
