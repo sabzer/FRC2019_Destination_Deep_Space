@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import frc.robot.subsystem.autonomous.AutonomousSubsystem;
 import frc.robot.subsystem.climber.ClimberSubsystem;
 import frc.robot.subsystem.drive.DriveSubsystem;
 import frc.robot.subsystem.lighting.LightingSubsystem;
@@ -61,6 +62,8 @@ public class Robot extends TimedRobot {
   private VisionSubsystem     visionSubsystem;
   private LightingSubsystem   lightingSubsystem;
 
+  private AutonomousSubsystem autonomousSubsystem;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -97,6 +100,9 @@ public class Robot extends TimedRobot {
 
     lightingSubsystem = LightingSubsystem.instance();
     lightingSubsystem.initialize();
+
+    autonomousSubsystem = AutonomousSubsystem.instance();
+    autonomousSubsystem.initialize();
   }
 
   /**
@@ -261,7 +267,9 @@ public class Robot extends TimedRobot {
 
     navigationSubsystem.diagnosticsInitialize();
     visionSubsystem.diagnosticsInitialize();
-    lightingSubsystem.diagnosticsInitialize();    
+    lightingSubsystem.diagnosticsInitialize();
+
+    autonomousSubsystem.diagnosticsInitialize();
 
     // NOT ON JUNIOR
     // climberSubsystem.startIdle();
@@ -283,7 +291,9 @@ public class Robot extends TimedRobot {
 
     navigationSubsystem.diagnosticsPeriodic();
     visionSubsystem.diagnosticsPeriodic();
-    lightingSubsystem.diagnosticsPeriodic();    
+    lightingSubsystem.diagnosticsPeriodic();   
+    
+    autonomousSubsystem.diagnosticsPeriodic();
 
     MotorTestModes.periodic();
 
