@@ -233,7 +233,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     driveSubsystem.startIdle();
-    autonomousSubsystem.startIdle();
+    // TODO: Remove this unless we really need it; autonomousSubsystem.startIdle();
 
     // NOT ON JUNIOR
     // scoringSubsystem.startIdle();
@@ -260,8 +260,6 @@ public class Robot extends TimedRobot {
   public void testInit() {
     // !!!!!! DON'T START THE SS IDLE COMMANDS HERE !!!!
 
-    autonomousSubsystem.startIdle();
-
     driveSubsystem.diagnosticsInitialize();
 
     // NOT ON JUNIOR
@@ -272,7 +270,7 @@ public class Robot extends TimedRobot {
     visionSubsystem.diagnosticsInitialize();
     lightingSubsystem.diagnosticsInitialize();
 
-    autonomousSubsystem.diagnosticsInitialize();
+    // TODO: Remove this unless we really need it; autonomousSubsystem.diagnosticsInitialize();
 
     // NOT ON JUNIOR
     // climberSubsystem.startIdle();
@@ -287,7 +285,7 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     
     driveSubsystem.diagnosticsPeriodic();
-    autonomousSubsystem.diagnosticsPeriodic();
+    // TODO: Remove this unless we really need it; autonomousSubsystem.diagnosticsPeriodic();
 
     // NOT ON JUNIOR
     // climberSubsystem.diagnosticsPeriodic();
