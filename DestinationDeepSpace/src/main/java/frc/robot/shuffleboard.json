@@ -203,7 +203,7 @@
           },
           "0,6": {
             "size": [
-              2,
+              3,
               1
             ],
             "content": {
@@ -214,7 +214,7 @@
           },
           "0,7": {
             "size": [
-              2,
+              3,
               1
             ],
             "content": {
@@ -223,15 +223,17 @@
               "_title": "SmartDashboard/DriveSubsystem/Real Right Speed (ips)"
             }
           },
-          "8,4": {
+          "10,6": {
             "size": [
-              2,
-              1
+              6,
+              5
             ],
             "content": {
-              "_type": "Text View",
+              "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/NavigationSubsystem/Yaw Rate (dps)",
-              "_title": "SmartDashboard/NavigationSubsystem/Yaw Rate (dps)"
+              "_title": "SmartDashboard/NavigationSubsystem/Yaw Rate (dps)",
+              "Graph/Visible time": 30.0,
+              "Visible data/SmartDashboard/NavigationSubsystem/Yaw Rate (dps)": true
             }
           },
           "8,5": {
@@ -608,7 +610,7 @@
               "Crosshair/Crosshair color": "#FFFFFFFF",
               "Controls/Show controls": true,
               "Controls/Rotation": "NONE",
-              "compression": 43.0,
+              "compression": 18.0327868852459,
               "fps": -1,
               "imageWidth": -1,
               "imageHeight": -1
@@ -640,6 +642,28 @@
               "Slider Settings/Min": 0.0,
               "Slider Settings/Max": 0.1,
               "Slider Settings/Block increment": 1.0E-4
+            }
+          },
+          "12,4": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///BucketVision/Overlay",
+              "_title": "BucketVision/Overlay"
+            }
+          },
+          "12,6": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///BucketVision/NumTargets",
+              "_title": "BucketVision/NumTargets"
             }
           }
         }
@@ -1101,6 +1125,85 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/TestMode/Encoder (abs ticks)",
               "_title": "/SmartDashboard/TestMode/Encoder (abs ticks)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Auto",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 64.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "6,4": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Toggle Switch",
+              "_source0": "network_table:///SmartDashboard/AutonomousSubsystem/DiagnosticsEnabled",
+              "_title": "SmartDashboard/AutonomousSubsystem/DiagnosticsEnabled"
+            }
+          },
+          "8,2": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Toggle Switch",
+              "_source0": "network_table:///SmartDashboard/AutonomousSubsystem/TelemetryEnabled",
+              "_title": "SmartDashboard/AutonomousSubsystem/TelemetryEnabled"
+            }
+          },
+          "8,4": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///BucketVision/NumTargets",
+              "_title": "BucketVision/NumTargets"
+            }
+          },
+          "6,2": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///SmartDashboard/AutonomousSubsystem/AutoAssist",
+              "_title": "SmartDashboard/AutonomousSubsystem/AutoAssist"
+            }
+          },
+          "7,0": {
+            "size": [
+              3,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/AutonomousSubsystem/CurrentCommand",
+              "_title": "SmartDashboard/AutonomousSubsystem/CurrentCommand"
+            }
+          },
+          "6,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/AutonomousSubsystem/PeriodicCounter",
+              "_title": "SmartDashboard/AutonomousSubsystem/PeriodicCounter"
             }
           }
         }

@@ -78,6 +78,7 @@ public class DriveSubsystem extends BitBucketSubsystem {
 
 	private static DifferentialDrive differentialDrive;
 
+	private boolean vDriveEnabled = true;
 
 	// Can adjust these to help the robot drive straight with zero turn stick.
 	// +Values will add +yaw correct (CCW viewed from top) when going forward.
@@ -430,6 +431,11 @@ public class DriveSubsystem extends BitBucketSubsystem {
 			motionMode = false;
 		}
 	}
+
+	public void setVDriveEnable(boolean enable)
+	{
+		vDriveEnabled = enable;
+	}
 	/**
 	 * drive - takes a speed and turn factor and passes to the selected drive algorithm
 	 * Context depends upon which algorithm is selected, but is generally [-1,1] domain
@@ -493,8 +499,11 @@ public class DriveSubsystem extends BitBucketSubsystem {
 					break;
 				}
 				case Velocity: {
-					velocityDrive(speed, turn);
+					if (vDriveEnabled)
+					{
+						velocityDrive(speed, turn);
 
+					}
 					break;
 				}
 			}
@@ -573,7 +582,7 @@ public class DriveSubsystem extends BitBucketSubsystem {
 		// TODO: add filter
 		double measuredTurn_radps = Math.toRadians(navigation.getYawRate_degPerSec());
 		double error_radps = turn_radps - measuredTurn_radps;
-		turn_radps += error_radps;
+		//turn_radps += error_radps;
 
 		double diffSpeed_ips = turn_radps * DriveConstants.WHEEL_TRACK_INCHES / 2.0 ;
 

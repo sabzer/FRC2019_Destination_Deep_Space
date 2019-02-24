@@ -64,10 +64,6 @@ public class VisionSubsystem extends BitBucketSubsystem {
 		{
 			setIlluminatorSnore();
 		}
-		else if (ds.isTest())
-		{
-			setIlluminatorOff();			
-		}
 		else
 		{
 			enableFront();
@@ -83,6 +79,7 @@ public class VisionSubsystem extends BitBucketSubsystem {
 	@Override
 	public void diagnosticsInitialize() {
 		// TODO Auto-generated method stub
+		enableFront();
 	}
 
 	@Override

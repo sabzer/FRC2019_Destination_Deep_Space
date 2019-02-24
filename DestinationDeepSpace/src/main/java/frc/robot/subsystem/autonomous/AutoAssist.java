@@ -3,6 +3,7 @@ package frc.robot.subsystem.autonomous;
 
 
 import frc.robot.operatorinterface.OI;
+import frc.robot.subsystem.drive.DriveConstants;
 import frc.robot.subsystem.drive.DriveSubsystem;
 import frc.robot.utils.CommandUtils;
 
@@ -35,9 +36,16 @@ public class AutoAssist extends Command {
         System.out.println(this.getClass().getName() + " AUTO START " + " " + System.currentTimeMillis()/1000);
         autonomousSubsystem.disable();
     }
+    
+	public static double map(double x, double inMin, double inMax, double outMin, double outMax)
+	{
+	   return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+	}
 
     @Override
     protected boolean isFinished() {
+        driveSubsystem.setVDriveEnable(false);
+
         boolean forceIdle = oi.driverIdle();
 
         if (forceIdle) {
@@ -56,33 +64,42 @@ public class AutoAssist extends Command {
 
         CameraFeedback feedback = autonomousSubsystem.getClosestObjectData();
 
-        boolean inAutoAssistRegion = feedback.isInAutoAssistRegion();
+        double turnRate_radps = 0.0;
 
-        // can no longer help
-        if (inAutoAssistRegion == false) {
-            return CommandUtils.stateChange(new Idle());
+        if (feedback != null)
+        {
+            boolean inAutoAssistRegion = feedback.isInAutoAssistRegion();
+
+            // can no longer help
+            if (inAutoAssistRegion == false) {
+                return CommandUtils.stateChange(new Idle());
+            }
+ 
+            double offAxis = feedback.getOffAxis();
+            double parallax = feedback.getParallax();
+            double distance = feedback.getDistance();
+
+            // no need to keep guiding if in a certain distance
+            if (distance <= AutonomousConstants.GUIDANCE_STOP) {
+                return CommandUtils.stateChange(new Idle());
+            }
+
+            guidance.setOffAxis(offAxis);
+            guidance.setParallax(parallax);
+
+
+
+            turnRate_radps = guidance.getTurnRate(distance);
         }
 
-
-
-        double offAxis = feedback.getOffAxis();
-        double parallax = feedback.getParallax();
-        double distance = feedback.getDistance();
-
-        // no need to keep guiding if in a certain distance
-        if (distance <= AutonomousConstants.GUIDANCE_STOP) {
-            return CommandUtils.stateChange(new Idle());
-        }
-
-        guidance.setOffAxis(offAxis);
-        guidance.setParallax(parallax);
-
-
-
-        double turnRate_radps = guidance.getTurnRate(distance);
-
-        driveSubsystem.velocityDrive(
-            AutonomousConstants.ASSIST_VELOCITY_IPS,
+        double speed = oi.speed();
+		double speed_ips = map(speed,
+								 -1.0,
+								  1.0,
+								 -DriveConstants.MAX_ALLOWED_SPEED_IPS,
+								 DriveConstants.MAX_ALLOWED_SPEED_IPS);
+        driveSubsystem.velocityDrive_auto(
+            speed_ips,
             turnRate_radps
         );
 

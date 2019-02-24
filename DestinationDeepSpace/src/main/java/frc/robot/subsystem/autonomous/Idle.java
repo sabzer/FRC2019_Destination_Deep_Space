@@ -1,6 +1,7 @@
 package frc.robot.subsystem.autonomous;
 
 import frc.robot.operatorinterface.OI;
+import frc.robot.subsystem.drive.DriveSubsystem;
 import frc.robot.utils.CommandUtils;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Idle extends Command {
     private static OI oi = OI.instance();
     private static AutonomousSubsystem autonomousSubsystem = AutonomousSubsystem.instance();
+    private static DriveSubsystem driveSubsystem = DriveSubsystem.instance();
 
 
 
@@ -28,6 +30,7 @@ public class Idle extends Command {
 
     @Override
     protected boolean isFinished() {
+        driveSubsystem.setVDriveEnable(true);
         boolean forceIdle = oi.driverIdle();
 
         if (forceIdle) {
