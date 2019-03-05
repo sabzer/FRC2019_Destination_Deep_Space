@@ -630,7 +630,7 @@
               "_title": "BucketVision/BucketVisionState"
             }
           },
-          "2,0": {
+          "3,0": {
             "size": [
               9,
               7
@@ -673,7 +673,7 @@
               "_source0": "network_table:///BucketVision/Exposure",
               "_title": "BucketVision/Exposure",
               "Slider Settings/Min": 0.0,
-              "Slider Settings/Max": 0.1,
+              "Slider Settings/Max": 50.0,
               "Slider Settings/Block increment": 1.0E-4
             }
           },
@@ -697,6 +697,17 @@
               "_type": "Text View",
               "_source0": "network_table:///BucketVision/NumTargets",
               "_title": "BucketVision/NumTargets"
+            }
+          },
+          "6,8": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///BucketVision/Exposure",
+              "_title": "/BucketVision/Exposure"
             }
           }
         }
@@ -806,7 +817,8 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/ManualJoystickCommand",
               "_title": "SmartDashboard/ClimberSubsystem/ManualJoystickCommand",
-              "Graph/Visible time": 30.0
+              "Graph/Visible time": 30.0,
+              "Visible data/SmartDashboard/ClimberSubsystem/ManualJoystickCommand": true
             }
           },
           "0,5": {
@@ -829,7 +841,8 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/climbMotor1Current",
               "_title": "SmartDashboard/ClimberSubsystem/climbMotor1Current",
-              "Graph/Visible time": 30.0
+              "Graph/Visible time": 30.0,
+              "Visible data/SmartDashboard/ClimberSubsystem/climbMotor1Current": true
             }
           },
           "8,3": {
@@ -841,7 +854,8 @@
               "_type": "Graph",
               "_source0": "network_table:///SmartDashboard/ClimberSubsystem/climbMotor2Current",
               "_title": "SmartDashboard/ClimberSubsystem/climbMotor2Current",
-              "Graph/Visible time": 30.0
+              "Graph/Visible time": 30.0,
+              "Visible data/SmartDashboard/ClimberSubsystem/climbMotor2Current": true
             }
           }
         }

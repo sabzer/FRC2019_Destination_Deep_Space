@@ -77,7 +77,7 @@ public class VisionSubsystem extends BitBucketSubsystem {
 				double offAxis = 2 * pos_x[i] - 1; // normalize to [-1, 1] from [0, 1]
 
 				if (Math.abs(offAxis) <= Math.abs(min_offAxis)) {
-					if ((pos_y[i] > 0.35) && (pos_y[i] < 0.6))
+					if ((pos_y[i] > 0) && (pos_y[i] < 1.0))
 					{
 						min_index = i;
 						min_offAxis = offAxis;

@@ -204,7 +204,7 @@ public class DriveSubsystem extends BitBucketSubsystem {
 			leftMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 
 											DriveConstants.HIGH_STATUS_FRAME_PERIOD_MS, 
 											DriveConstants.CONTROLLER_TIMEOUT_MS);
-			leftMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 
+			leftMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 
 											DriveConstants.HIGH_STATUS_FRAME_PERIOD_MS, 
 											DriveConstants.CONTROLLER_TIMEOUT_MS);
 			
@@ -275,7 +275,7 @@ public class DriveSubsystem extends BitBucketSubsystem {
 			rightMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_13_Base_PIDF0, 
 											DriveConstants.HIGH_STATUS_FRAME_PERIOD_MS, 
 											DriveConstants.CONTROLLER_TIMEOUT_MS);
-			rightMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 
+			rightMotors[i].setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 
 											DriveConstants.HIGH_STATUS_FRAME_PERIOD_MS, 
 											DriveConstants.CONTROLLER_TIMEOUT_MS);
 			
