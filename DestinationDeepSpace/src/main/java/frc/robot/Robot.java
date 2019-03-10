@@ -8,6 +8,7 @@
 package frc.robot;
 
 import frc.robot.subsystem.autonomous.AutonomousSubsystem;
+import frc.robot.subsystem.autonomous.motion.*;
 import frc.robot.subsystem.climber.ClimberSubsystem;
 import frc.robot.subsystem.drive.DriveSubsystem;
 import frc.robot.subsystem.lighting.LightingSubsystem;
@@ -25,6 +26,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Notifier;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -64,12 +66,23 @@ public class Robot extends TimedRobot {
 
   private AutonomousSubsystem autonomousSubsystem;
 
+
+  Waypoint[] way = {new Waypoint(0,0,0), new Waypoint(3,1.5,90), new Waypoint(0,3,180), new Waypoint(-3,1.5,270), new Waypoint(0,0,0)};
+  TrajectoryFinder traj;
+  Notifier mpPush;
+  long startTime;
+
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
+    traj = new TrajectoryFinder(TrajectoryFinder.MotionProfile.TRAPEZOIDAL, PathFinder.PathType.QUINTIC_HERMITE, way,0,3,-0.0,2,2);
+
+
+
 
     // Doing it here rather than in a constructor eliminates potential global dependencies
     // The base classes for this Robot class have some housekeeping to do which can
@@ -212,6 +225,15 @@ public class Robot extends TimedRobot {
     // scoringSubsystem.startIdle();
     // climberSubsystem.startIdle();
 
+    startTime = System.currentTimeMillis();
+    mpPush= new Notifier(() ->{
+      double t=(System.currentTimeMillis()-startTime)*.001;
+      MotionPoint mptemp = new MotionPoint(traj.getMotionPoint(t).speed, traj.getMotionPoint(t).turn_radius);
+      driveSubsystem.velocityDrive_auto(mptemp.speed*12, mptemp.speed/mptemp.turn_radius);
+      System.out.println("speed commanded " + mptemp.speed*12 + " radius commanded " + mptemp.speed/mptemp.turn_radius);
+    });
+    mpPush.startPeriodic(1/traj.LOOP_HERTZ);
+
   }
 
   /**
@@ -223,6 +245,7 @@ public class Robot extends TimedRobot {
     // the actions here occur BEFORE the scheduled commands run; this means that
     // commands can be added during this execution cycle and will be acted upon
     // within the current cycle.
+    if(System.currentTimeMillis()-startTime>traj.t_total) mpPush.stop();
   }
 
   /**

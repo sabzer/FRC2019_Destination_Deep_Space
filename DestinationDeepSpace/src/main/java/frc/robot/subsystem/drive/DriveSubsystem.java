@@ -624,7 +624,6 @@ public class DriveSubsystem extends BitBucketSubsystem {
 		selectVelocityMode(true);
 
 
-
 		SmartDashboard.putNumber(getName()+"/Commanded Speed (ips)", speed_ips);
 		SmartDashboard.putNumber(getName()+"/Commanded Turn (dps)", Math.toDegrees(turn_radps));
 
