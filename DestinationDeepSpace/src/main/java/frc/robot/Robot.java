@@ -228,9 +228,9 @@ public class Robot extends TimedRobot {
     startTime = System.currentTimeMillis();
     mpPush= new Notifier(() ->{
       double t=(System.currentTimeMillis()-startTime)*.001;
-      MotionPoint mptemp = new MotionPoint(traj.getMotionPoint(t).speed, traj.getMotionPoint(t).turn_radius);
-      driveSubsystem.velocityDrive_auto(mptemp.speed*12, mptemp.speed/mptemp.turn_radius);
-      System.out.println("speed commanded " + mptemp.speed*12 + " radius commanded " + mptemp.speed/mptemp.turn_radius);
+      //MotionPoint mptemp = new MotionPoint(traj.getMotionPoint(t).speed, traj.getMotionPoint(t).turn_radius);
+      //driveSubsystem.velocityDrive_auto(mptemp.speed*12, mptemp.speed/mptemp.turn_radius);
+      //System.out.println("speed commanded " + mptemp.speed*12 + " radius commanded " + mptemp.speed/mptemp.turn_radius);
     });
     mpPush.startPeriodic(1/traj.LOOP_HERTZ);
 

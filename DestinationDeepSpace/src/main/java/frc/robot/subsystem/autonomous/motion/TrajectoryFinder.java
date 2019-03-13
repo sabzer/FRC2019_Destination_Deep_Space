@@ -46,6 +46,7 @@ public class TrajectoryFinder {//deceleration is NEGATIVE* remember that pls
         this.v_start=v_start;
         this.v_end=v_end;
         initializeTraj();
+        generateMotionProfile();
     }
 
     private void initializeTraj()
@@ -124,48 +125,43 @@ public class TrajectoryFinder {//deceleration is NEGATIVE* remember that pls
         return result;
     }
 
-    public void getMotionProfile()
+    public void generateMotionProfile()
     {
         mPoints = new MotionPoint[(int) ((t_acc + t_cruise + t_dec)*LOOP_HERTZ + 1)];
-        double spd;
-        double curv;
-        double xp;
-        double yp;
-        double xpp;
-        double ypp;
-        double sval;
-        int splno;
-        double d;
+        double time;
         for(int i=0; i<mPoints.length; i++)
         {
-            spd=getPointInfo(i/LOOP_HERTZ)[1];
-            splno= (int) (pathfinder.getSplineNo(getPointInfo(i/LOOP_HERTZ)[0])[0]);
-            d=pathfinder.getSplineNo(getPointInfo(i/LOOP_HERTZ)[0])[1];
-            sval=pathfinder.splines[splno].ltos.ceilingEntry(d).getValue();
-            xp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xprimecoef, sval);
-            xpp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xdoubleprimecoef, sval);
-            yp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].yprimecoef, sval);
-            ypp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].ydoubleprimecoef, sval);
-
-            curv=Math.abs(xpp*yp-ypp*xp)/Math.pow((xp*xp + yp*yp), 1.5);
-            mPoints[i] = new MotionPoint(spd,1/curv);
+            time=i/LOOP_HERTZ;
+            mPoints[i] = getMotionPoint(time);
+        }
+        for(int i=0; i<mPoints.length; i++)//sets their rotational acclerations
+        {
+            time=i/LOOP_HERTZ;
+            if(i==0||i==mPoints.length-1) mPoints[i].r_acc=0;
+            else mPoints[i].r_acc=(mPoints[i+1].r_vel-mPoints[i-1].r_vel)*2/LOOP_HERTZ;
         }
     }
 
     public MotionPoint getMotionPoint(double t)
     {
-        double spd=getPointInfo(t)[1];
-        int splno= (int) (pathfinder.getSplineNo(getPointInfo(t)[0])[0]);
-        double d=pathfinder.getSplineNo(getPointInfo(t)[0])[1];
+        double linvel=getPointInfo(t)[1];
+        double linpos=getPointInfo(t)[0];
+        double linacc=getPointInfo(t)[2];
+
+        int splno= (int) (pathfinder.getSplineNo(linpos)[0]);
+        double d=pathfinder.getSplineNo(linpos)[1];
         double sval=pathfinder.splines[splno].ltos.ceilingEntry(d).getValue();
         double xp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xprimecoef, sval);
         double xpp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].xdoubleprimecoef, sval);
         double yp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].yprimecoef, sval);
         double ypp=pathfinder.splines[splno].evaluateFunction(pathfinder.splines[splno].ydoubleprimecoef, sval);
 
-        double curv=Math.abs(xpp*yp-ypp*xp)/Math.pow((xp*xp + yp*yp), 1.5);
-        return new MotionPoint(spd,1/curv);
-    }
-    
+        double curv=Math.abs(xpp*yp-ypp*xp)/Math.pow((xp*xp + yp*yp), 1.5);// curvature is 1/radius
+
+        double rotpos=Math.atan(yp/xp);
+        double rotvel=linvel*curv;//cuz curvature is 1/radius
+        
+        return new MotionPoint(linpos, linvel, linacc,rotpos, rotvel);
+    }       
 
 }
